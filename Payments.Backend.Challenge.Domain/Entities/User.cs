@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Payments.Backend.Challenge.Domain.Enums;
 using Payments.Backend.Challenge.Domain.Interfaces;
 
@@ -5,6 +6,7 @@ namespace Payments.Backend.Challenge.Domain.Entities;
 
 public class User
 {
+    [Key]
     public long Id { get; private set; }
     public string FullName { get; private set; }
     public string? Cpf { get; private set; }    
