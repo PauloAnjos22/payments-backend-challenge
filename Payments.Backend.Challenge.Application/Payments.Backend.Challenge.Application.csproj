@@ -10,8 +10,4 @@
       <ProjectReference Include="..\Payments.Backend.Challenge.Domain\Payments.Backend.Challenge.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Interfaces\" />
-    </ItemGroup>
-
 </Project>
