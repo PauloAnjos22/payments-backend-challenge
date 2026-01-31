@@ -4,7 +4,7 @@ using Payments.Backend.Challenge.Application.Interfaces;
 
 namespace Payments.Backend.Challenge.Infrastructure.Services;
 
-public class AuthorizationMockService(HttpClient httpClient) : IAuthorizationMock
+public class ExternalAuthorizationMock(HttpClient httpClient) : IExternalAuthorizationMock
 {
     public async Task<bool> IsAuthorizedAsync()
     {

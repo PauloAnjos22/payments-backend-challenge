@@ -2,7 +2,7 @@ using Payments.Backend.Challenge.Application.DTOs;
 
 namespace Payments.Backend.Challenge.Application.Interfaces;
 
-public interface IAuthorizationMock
+public interface IExternalNotificationMock
 {
-    Task<bool> IsAuthorizedAsync();
+    Task<OperationResultDto> SendNotification();
 }
