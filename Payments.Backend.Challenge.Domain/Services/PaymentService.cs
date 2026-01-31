@@ -2,9 +2,9 @@ using Payments.Backend.Challenge.Domain.Entities;
 
 namespace Payments.Backend.Challenge.Domain.Services;
 
-public class PaymentTransference()
+public class PaymentService()
 {
-    public void ExecuteTransference(
+    public void ExecutePayment(
         User payer,
         Wallet walletPayer,
         Wallet walletPayee,

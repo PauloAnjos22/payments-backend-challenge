@@ -2,7 +2,7 @@ using Payments.Backend.Challenge.Application.DTOs;
 
 namespace Payments.Backend.Challenge.Application.Interfaces;
 
-public interface IExternalNotificationMock
+public interface IPaymentCoordinator
 {
-    Task<OperationResultDto> SendNotificationAsync();
+    Task<OperationResultDto> ExecuteAsync(PaymentRequestDto request);
 }

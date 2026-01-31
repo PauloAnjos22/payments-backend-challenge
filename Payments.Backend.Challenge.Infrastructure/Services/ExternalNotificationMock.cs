@@ -7,7 +7,7 @@ namespace Payments.Backend.Challenge.Infrastructure.Services;
 
 public class ExternalNotificationMock(HttpClient httpClient, ILogger<ExternalNotificationMock> logger) : IExternalNotificationMock
 {
-    public async Task<OperationResultDto> SendNotification()
+    public async Task<OperationResultDto> SendNotificationAsync()
     {
         var response = await httpClient.GetAsync("");
         if (response.IsSuccessStatusCode)
