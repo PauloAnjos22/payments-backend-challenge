@@ -5,5 +5,5 @@ namespace Payments.Backend.Challenge.Domain.Interfaces;
 public interface IWalletRepository
 {
     Task AddAsync(Wallet wallet);
-    Task<Wallet> GetWalletByUserIdAsync(long userId);
+    Task<Wallet?> GetWalletByUserIdAsync(long userId);
 }

@@ -17,7 +17,7 @@ public class UserRepository(AppDbContext context, ILogger<UserRepository> logger
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Error creating User");
+            logger.LogError(ex, "Error creating user.");
             throw;
         }
     }
