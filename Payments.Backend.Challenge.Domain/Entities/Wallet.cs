@@ -18,7 +18,7 @@ public class Wallet
         Balance = balance;
     }
 
-    public Wallet Create(long userId, decimal balance)
+    public static Wallet Create(long userId, decimal balance)
     {
         if (userId <= 0)
             throw new ArgumentException("UserId must be greater than zero.");

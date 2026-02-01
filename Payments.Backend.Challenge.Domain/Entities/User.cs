@@ -25,7 +25,7 @@ public class User
         Type = type;
     }
 
-    public User Create(
+    public static User Create(
         string fullName, 
         string cpf, 
         string email, 

@@ -2,7 +2,7 @@ using Payments.Backend.Challenge.Domain.Entities;
 
 namespace Payments.Backend.Challenge.Domain.Services;
 
-public class PaymentService()
+public class PaymentService
 {
     public void ExecutePayment(
         User payer,
