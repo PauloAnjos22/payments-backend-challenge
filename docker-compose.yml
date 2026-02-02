@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+    db:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: sql_server_db
+        environment:
+            SA_PASSWORD: ${SQL_SERVER_MANAGEMENT_DB_PASSWORD}
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1433:1433"
+        volumes:
+            - sqlserver_data:/var/opt/mssql
+
+    api:
+        build: 
+            context: . 
+            dockerfile: Payments.Backend.Challenge.API/Dockerfile
+        container_name: payment_backend_challenge
+        depends_on:
+            - db
+        environment:
+            ConnectionStrings__DefaultConnection: "Server=db;Database=PaymentBackendChallenge;User Id=sa;Password=${SQL_SERVER_MANAGEMENT_DB_PASSWORD};TrustServerCertificate=True;"
+        ports:
+            - "5000:8080"
+        
+volumes:
+    sqlserver_data:
