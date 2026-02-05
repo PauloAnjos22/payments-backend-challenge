@@ -29,6 +29,19 @@ Este projeto foi desenvolvido como solução para o desafio técnico do PicPay, 
 
 O projeto segue rigorosamente os princípios de **Clean Architecture** e **SOLID**, garantindo código testável, manutenível e escalável.
 
+### Diagrama de Classes (Estrutura)
+Este diagrama ilustra a separação entre as camadas de Aplicação, Domínio e Infraestrutura, destacando o uso de **Inversão de Dependência** para desacoplar a lógica de negócios de detalhes externos.
+
+![Diagrama de Classes da Arquitetura Limpa](./assets/Diagrama_de_classes_geral.png)
+
+
+### Diagrama de Sequência (Fluxo de Pagamento)
+O fluxo de transferência garante a consistência dos dados utilizando o padrão **Unit of Work**. A persistência só ocorre após todas as validações de domínio e autorizações externas serem bem-sucedidas.
+
+![Diagrama de Sequência do Fluxo de Pagamento](./assets/Diagrama_do_fluxo.png)
+
+
+
 ```
 Payments.Backend.Challenge/
 │
@@ -262,6 +275,7 @@ O banco de dados estará acessível em: `localhost:1433`
   "error": "Insufficient balance."
 }
 ```
+
 
 ## Regras de Negócio Implementadas
 
