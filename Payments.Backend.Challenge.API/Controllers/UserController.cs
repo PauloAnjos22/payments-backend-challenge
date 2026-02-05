@@ -10,11 +10,11 @@ namespace Payments.Backend.Challenge.API.Controllers
     public class UserController(IRegisterUser registerUser) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult<RegisterUserResponseDto>> ExecuteAsync([FromBody] RegisterUserRequestDto request)
+        public async Task<ActionResult<OperationResultDto<RegisterUserResponseDto>>> ExecuteAsync([FromBody] RegisterUserRequestDto request)
         {
             var response = await registerUser.ExecuteAsync(request);
             if (!response.Success)
-                return BadRequest(response.Error);
+                return BadRequest(response);
 
             return Ok(response);
         }

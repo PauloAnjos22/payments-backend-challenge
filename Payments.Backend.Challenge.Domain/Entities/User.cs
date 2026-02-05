@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Payments.Backend.Challenge.Domain.Enums;
 using Payments.Backend.Challenge.Domain.Interfaces;
@@ -56,6 +57,6 @@ public class User
     public void UserCanTransfer(UserType type)
     {
         if (type != UserType.Customer)
-            throw new ArgumentException("Only customers can send money");
+            throw new InvalidOperationException("Only customers can send money");
     }
 }

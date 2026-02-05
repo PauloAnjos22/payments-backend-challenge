@@ -10,13 +10,13 @@ namespace Payments.Backend.Challenge.API.Controllers
     public class PaymentController(IPaymentCoordinator paymentCoordinator) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> PaymentAsync([FromBody] PaymentRequestDto request)
+        public async Task<ActionResult<OperationResultDto>> PaymentAsync([FromBody] PaymentRequestDto request)
         {
             var response = await paymentCoordinator.ExecuteAsync(request);
             if (!response.Success)
-                return BadRequest(response.Error);
+                return BadRequest(response);
 
-            return Ok();
+            return Ok(response);
         }
     }
 }

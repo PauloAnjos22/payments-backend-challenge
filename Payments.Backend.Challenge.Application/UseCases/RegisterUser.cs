@@ -24,7 +24,8 @@ public class RegisterUser(
             var emailExist = await userRepository.EmailExistsAsync(request.Email!);
             userUniquesPolicy.EnsureEmailIsUnique(emailExist);
 
-            var newUser =  User.Create(request.FullName!, request.Cpf!, request.Email!, request.Password!, request.Type, passwordHasher);
+            var newUser = User.Create(request.FullName!, request.Cpf!, request.Email!, request.Password!, request.Type,
+                passwordHasher);
             await userRepository.AddAsync(newUser);
 
             var newWallet = Wallet.Create(newUser.Id, 15);
@@ -38,10 +39,20 @@ public class RegisterUser(
 
             return OperationResultDto<RegisterUserResponseDto>.Ok(response);
         }
+        catch (InvalidOperationException ex)
+        {
+            logger.LogWarning(ex, "Business rule violation while registering user.");
+            return OperationResultDto<RegisterUserResponseDto>.Fail(ex.Message);
+        }
+        catch (ArgumentException ex)
+        {
+            logger.LogWarning(ex, "Validation error while registering user.");
+            return OperationResultDto<RegisterUserResponseDto>.Fail(ex.Message);
+        }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Failed to register user");
-            return OperationResultDto<RegisterUserResponseDto>.Fail("Fail to register user.");          
+            logger.LogError(ex, "Unexpected error while registering user.");
+            return OperationResultDto<RegisterUserResponseDto>.Fail("An unexpected error ocurred. Please try again later.");
         }
     }
 }
